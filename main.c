@@ -6,7 +6,7 @@
 //FUSES
 #FUSES NOWDT  //Fuse No watchdog timer
 //Fuse que hace el "switcheo" entre el cristal externo e interno o detiene al microcontrolador 
-//en caso de que nuestro cristal externo este dañado
+//en caso de que nuestro cristal externo este daÃ±ado
 #FUSES NOBROWNOUT 
 #FUSES INTRC //Fuse para cristal interno
 
@@ -97,7 +97,7 @@ void Display(){
       PORTB=0x00;
       //Enviar al puerto B un 00000010, con lo cual se enciende el PIN_B1 (display 2)
       PORTB=0x02;
-      //Enviar al puerto D el valor de la posicion de las decimas obtenido en la funcion main
+      //Enviar al puerto D el valor de la posicion de las unidades obtenido en la funcion main
       PORTD=SecuenciaDisplay[decimas];
       //Delay de 7 ms para hacer la multiplexacion entre displays
       delay_ms(7);
@@ -105,7 +105,7 @@ void Display(){
       PORTB=0x0;
       //Enviar al puerto B un 00000001, con lo cual se enciende el PIN_B0 (display 1)
       PORTB=0x01;
-      //Enviar al puerto D el valor de la posicion de las unidades obtenido en la funcion main
+      //Enviar al puerto D el valor de la posicion de las decenas obtenido en la funcion main
       PORTD=SecuenciaDisplay[unidades];
       //Delay de 7 milisegundos
       delay_ms(7);
