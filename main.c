@@ -8,7 +8,7 @@
 //Fuse que hace el "switcheo" entre el cristal externo e interno o detiene al microcontrolador 
 //en caso de que nuestro cristal externo este dañado
 #FUSES NOBROWNOUT 
-#FUSES INTRC //Fuse para cristal interno
+#FUSES HS//Fuse para cristal externo (high speed)
 
 #use delay(clock=8M)
 
