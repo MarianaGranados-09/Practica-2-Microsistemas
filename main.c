@@ -9,6 +9,7 @@
 //en caso de que nuestro cristal externo este dañado
 #FUSES NOBROWNOUT 
 #FUSES HS//Fuse para cristal externo (high speed)
+#FUSES NOPROTECT
 
 #use delay(clock=8M)
 
@@ -30,7 +31,7 @@
 //Secuencia para el display de 7 segmentos de catodo comun
 int16 const SecuenciaDisplay[]={0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
 //Declaracion de las variables 
-int16 decimas=0, unidades=0;
+int16 decenas=0, unidades=0;
 
 void Display();
 
@@ -82,7 +83,7 @@ void main()
       //Conversion de la lectura total del ADC al distancia en cm con la formula obtenida en excel
       Distancia = pow((LecturaTotal/3066.9),(1/(-0.825)));    
       //Calculo de los valores que se mostraran en los displays de 7 segmentos:
-      decimas=Distancia/10;
+      decenas=Distancia/10;
       unidades=Distancia%10;
       //Funcion para mostrar los valores en el display
       Display();
@@ -98,7 +99,7 @@ void Display(){
       //Enviar al puerto B un 00000010, con lo cual se enciende el PIN_B1 (display 2)
       PORTB=0x02;
       //Enviar al puerto D el valor de la posicion de las unidades obtenido en la funcion main
-      PORTD=SecuenciaDisplay[decimas];
+      PORTD=SecuenciaDisplay[decenas];
       //Delay de 7 ms para hacer la multiplexacion entre displays
       delay_ms(7);
       //Enviar al puerto B un 0
